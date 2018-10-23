@@ -1,0 +1,56 @@
+{{define "list"}}<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{.Title}}</title>
+    <link rel="stylesheet" href="./resources/css/common.css">
+</head>
+<body>
+<div class="navigation">
+    <div class="transition"><a href="/">My Page</a></div>
+    <div class="transition"><a href="/register">Data Register</a></div>
+    <div class="transition"><a href="/logout">Log Out</a></div>
+</div>
+<h1 class="animation">{{.Title}}</h1>
+<p><small>for</small> <a href="/"><em><u>{{.Username}}</u></em></a></p>
+<p>Datetime: {{.Datetime}}</p>
+{{if ne .StmtErr ""}}
+<p><strong><em>{{.StmtErr}}</em></strong></p>
+{{end}}
+{{if .Values}}
+<form action="/list" method="post">
+<table>
+    {{if .Values}}
+        <tr>
+            <th>ID</th>
+            <th>Current String</th>
+            <th>New String</th>
+            <th>Submit</th>
+            <th>Delete</th>
+        </tr>
+        {{range $key, $value := .Values}}
+        <tr>
+            <td>{{$key}}</td>
+            <td>{{$value}}</td>
+            <td><label id="updName{{$key}}"><input type="text" name="updName{{$key}}" ></label></td>
+            <td><button type="submit" name="update" value={{$key}} >Save</button></td>
+            <td><button type="submit" name="del" value={{$key}} >Delete</button></td>
+        </tr>
+        {{end}}
+    {{end}}
+</table>
+</form>
+{{end}}
+
+{{template "footer" .}}
+
+</body>
+<script src="./resources/js/node_modules/jquery/dist/jquery.min.js"></script>
+<script>
+    $(function() {
+        $(document).on("keypress", "input:not(.allow_submit)", function(event) {
+            return event.which !== 13;
+        });
+    });
+</script>
+</html>
+{{end}}

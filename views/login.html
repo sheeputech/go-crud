@@ -1,0 +1,39 @@
+{{define "login"}}<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{.Title}}</title>
+    <link rel="stylesheet" href="./resources/css/common.css">
+</head>
+<body>
+<div class="navigation">
+    <div class="transition"><a href="/">Top Page</a></div>
+</div>
+<h1 class="animation">{{.Title}}</h1>
+<p>Datetime: {{.Datetime}}</p>
+{{if .Auth}}
+    <h3>{{.StmtErr}}</h3>
+    <p>username: {{.Username}}</p>
+{{else if ne .StmtErr ""}}
+    <h3>{{.StmtErr}}</h3>
+{{end}}
+<div>
+    <form role="form" action="/login" method="post">
+        <table>
+            <tr>
+                <th>Username</th>
+                <td><input type="text" name="username" placeholder="Username"></td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td><input type="text" name="password" placeholder="Password"></td>
+            </tr>
+        </table>
+        <button type="submit" name="login" value="true">Login</button>
+    </form>
+</div>
+
+{{template "footer" .}}
+
+</body>
+</html>
+{{end}}

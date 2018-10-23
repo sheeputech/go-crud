@@ -1,0 +1,36 @@
+{{define "register"}}<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{.Title}}</title>
+    <link rel="stylesheet" href="./resources/css/common.css">
+</head>
+<body>
+<div class="navigation">
+    <div class="transition"><a href="/">My Page</a></div>
+    <div class="transition"><a href="/list">Data List</a></div>
+    <div class="transition"><a href="/logout">Log Out</a></div>
+</div>
+<h1 class="animation">{{.Title}}</h1>
+<p><small>for</small> <a href="/"><em><u>{{.Username}}</u></em></a></p>
+<p>Datetime: {{.Datetime}}</p>
+{{if ne .StmtErr ""}}
+<p><em>{{.StmtErr}}</em></p>
+{{end}}
+<form action="/register" method="post">
+    Please enter a text: <label id="charstr"><input type="text" name="charstr"></label>
+    <input type="submit" name="reg" value="Save">
+</form>
+
+{{template "footer" .}}
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $(function() {
+        $(document).on("keypress", "input:not(.allow_submit)", function(event) {
+            return event.which !== 13;
+        });
+    });
+</script>
+</html>
+{{end}}

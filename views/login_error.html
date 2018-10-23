@@ -1,0 +1,18 @@
+{{define "login_error"}}<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>{{.Title}}</title>
+    <link rel="stylesheet" href="./resources/css/common.css">
+</head>
+<body>
+<div class="navigation">
+    <div class="transition"><a href="/">Top Page</a></div>
+</div>
+<h1>{{.Title}}</h1>
+<p>Datetime: {{.Datetime}}</p>
+
+{{template "footer" .}}
+
+</body>
+</html>
+{{end}}

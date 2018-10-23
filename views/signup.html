@@ -1,0 +1,46 @@
+{{define "signup"}}<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{.Title}}</title>
+    <link rel="stylesheet" href="./resources/css/common.css">
+</head>
+<body>
+<div class="navigation">
+    <div class="transition"><a href="/login">Log In</a></div>
+    <div class="transition"><a href="/">Top Page</a></div>
+</div>
+<h1 class="animation">{{.Title}}</h1>
+<p>Datetime: {{.Datetime}}</p>
+<div>
+{{if and (ne .Username "") (ne .StmtErr "")}}
+<h3>{{.StmtErr}}</h3>
+<p>Username: {{.Username}}</p>
+{{else if ne .StmtErr ""}}
+<h3>{{.StmtErr}}</h3>
+{{end}}
+</div>
+<div>
+    <form role="form" action="/signup" method="post">
+        <table>
+            <tr>
+                <th>Username</th>
+                <td><input type="text" name="username" placeholder="Username"> {{if ne .StmtLongUser ""}}{{.StmtLongUser}}{{end}}</td>
+            </tr>
+            <tr>
+                <th>E-mail</th>
+                <td><input type="text" name="email" placeholder="E-mail"> {{if ne .StmtLongEmail ""}}{{.StmtLongEmail}}{{end}}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td><input type="text" name="password" placeholder="Password"> {{if ne .StmtLongPass ""}}{{.StmtLongPass}}{{end}}</td>
+            </tr>
+        </table>
+        <button type="submit" name="signup" value="true">Sign Up</button>
+    </form>
+</div>
+
+{{template "footer" .}}
+
+</body>
+</html>
+{{end}}

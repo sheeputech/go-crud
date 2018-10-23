@@ -1,0 +1,96 @@
+@charset "UTF-8";
+body {
+  text-align: center; }
+
+h1 {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 30px; }
+
+form {
+  margin: 15px; }
+  form table {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: inherit;
+    border: 2px black solid; }
+    form table th {
+      padding: 4px; }
+    form table td {
+      padding: 4px; }
+
+div {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: auto;
+  margin-right: auto; }
+
+p {
+  margin: 10px 0;
+  font-size: 22px; }
+
+button {
+  display: inline-block;
+  padding: 0.2em 0.7em;
+  text-decoration: none;
+  background: #dbdb8d;
+  /*ボタン色*/
+  color: black;
+  border-bottom: solid 4px #dbdb8d;
+  border-radius: 3px;
+  font-size: 16px; }
+  button:active {
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+    /*下に動く*/
+    border-bottom: none;
+    /*線を消す*/ }
+
+.navigation {
+  margin-top: 20px;
+  display: inline-flex; }
+
+.salary {
+  font-size: 12px; }
+
+.footer {
+  font-size: 14px;
+  bottom: 15px;
+  width: 100%; }
+
+.transition {
+  left: 10px;
+  right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  width: fit-content;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  transition-delay: 0s;
+  transition-duration: 1s;
+  transition-timing-function: ease; }
+  .transition:hover {
+    background-color: #dbdb8d;
+    width: fit-content;
+    border-radius: 15px; }
+
+.animation {
+  animation-name: anime01;
+  animation-duration: 5s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite; }
+
+@keyframes anime01 {
+  0%, 100% {
+    width: 200px;
+    height: 55px;
+    background-color: #dbdb8d;
+    margin-bottom: 10px;
+    border-radius: 10px; }
+  50% {
+    width: 280px;
+    height: 50px;
+    margin-bottom: 15px;
+    border-radius: 25px; } }

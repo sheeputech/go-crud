@@ -1,0 +1,47 @@
+{{define "index"}}<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>{{.Title}}</title>
+    <link rel="stylesheet" type="text/css" href="./resources/css/common.css">
+</head>
+<body>
+<div class="navigation">
+{{if .Auth}}
+    <div class="transition"><a href="/register">Data Register</a></div>
+    <div class="transition"><a href="/list">Data List</a></div>
+    <div class="transition"><a href="/logout">logout</a></div>
+{{else}}
+    <div class="transition"><a href="/login">login</a></div>
+    <div class="transition"><a href="/signup">sign up</a></div>
+{{end}}
+</div>
+<div class="animation"><h1>{{.Title}}</h1></div>
+<p><strong>{{.Statement}}{{if .Username}}{{.Username}}{{end}}!!</strong></p>
+
+{{if eq .Username "admin"}}
+<p class="paid">You were paid...</p>
+<h1 id="paid"></h1>
+{{end}}
+
+{{template "footer" .}}
+
+<div class="playing"></div>
+
+</body>
+<script>
+    paid();
+    function paid() {
+        var now = new Date();
+        var start = new Date(now.getFullYear(),now.getMonth(),now.getDate(), 11);
+        var end = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 19);
+        var elapsed = (now - start) / 3000;
+        var paid = Math.round(elapsed);
+        if ((end - now) >= 0) {
+            document.getElementById("paid").innerHTML = paid.toString();
+        }
+    }
+    setInterval('paid()',3000);
+</script>
+</html>
+{{end}}
